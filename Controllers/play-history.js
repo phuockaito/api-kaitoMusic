@@ -69,13 +69,8 @@ module.exports = {
       const account = await mongooseAccount.findById(id);
       if (!account)
         return res.status(404).json({ message: "Account not found" });
-      const playHistoryLength = await mongoosePlayHistory.find({
-        id_account: id,
-      });
-      const features = new ApiFeatures(
-        mongoosePlayHistory.find({ id_account: id }),
-        req.query
-      ).sorting();
+      const playHistoryLength = await mongoosePlayHistory.find({id_account: id});
+      const features = new ApiFeatures(mongoosePlayHistory.find({ id_account: id }),req.query).sorting();
       const result = await features.query;
       res.json({
         pagination: {

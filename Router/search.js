@@ -28,8 +28,6 @@ router.get("/", async (req, res) => {
         { slug_name_music: { $regex: query, $options: "$i" } },
         { slug_name_singer: { $regex: query, $options: "$i" } },
         { slug_category: { $regex: query, $options: "$i" } },
-        { slug_album: { $regex: query, $options: "$i" } },
-        { time: { $regex: query, $options: "$i" } },
       ],
     };
     const features = new ApiFeatures(

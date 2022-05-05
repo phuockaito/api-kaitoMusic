@@ -11,9 +11,11 @@ app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
-app.use(bodyParser.urlencoded({ extended: true }));
+
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
+
 require("dotenv").config();
 require("./initDB")();
 
@@ -25,13 +27,13 @@ const listMusicRouter = require("./Router/list-music");
 const favoriteRouter = require("./Router/favorite");
 const playHistoryRouter = require("./Router/play-history");
 
-app.use("/music", musicRouter);
-app.use("/search", searchRouter);
-app.use("/account", accountRouter);
-app.use("/comment", commentRouter);
-app.use("/list-music", listMusicRouter);
-app.use("/favorite", favoriteRouter);
-app.use("/play-history", playHistoryRouter);
+app.use("/api/music", musicRouter);
+app.use("/api/search", searchRouter);
+app.use("/api/account", accountRouter);
+app.use("/api/comment", commentRouter);
+app.use("/api/list-music", listMusicRouter);
+app.use("/api/favorite", favoriteRouter);
+app.use("/api/play-history", playHistoryRouter);
 
 app.use((error, req, res, next) => {
   res.status(error.status || 500);

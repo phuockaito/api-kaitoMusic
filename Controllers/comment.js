@@ -123,8 +123,7 @@ module.exports = {
   },
   GET_LIST_COMMENT: async (req, res) => {
     try {
-      // const { id } = req;
-      const id = "6106ca69d06a343d98f7bace";
+      const { id } = req;
       const _page = req.query._page * 1 || 1;
       const _limit = req.query._limit * 1 || 20;
       const start = (_page - 1) * _limit;
@@ -211,8 +210,7 @@ module.exports = {
   UPDATE_COMMENT_BY_ID: async (req, res) => {
     try {
       const { id } = req;
-      const { _id } = req.query;
-      const { content } = req.body;
+      const { content, _id } = req.body;
       const updatedAt = moment().format();
       const dataUpdate = {
         content,

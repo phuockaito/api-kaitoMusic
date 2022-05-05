@@ -6,10 +6,7 @@ const { OAuth2 } = google.auth;
 
 const mongooseMusic = require("../Model/music");
 const mongooseAccount = require("../Model/account");
-const {
-  createAccessToken,
-  createRefreshToken,
-} = require("../helpers/jwt_helpers");
+const {createAccessToken} = require("../helpers/jwt_helpers");
 
 class ApiFeatures {
   constructor(query, queryString) {
